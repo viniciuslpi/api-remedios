@@ -1,4 +1,4 @@
-import categorias from "../models/Categorias";
+import categorias from "../models/Categorias.js";
 
 class CategoriaController {
 
