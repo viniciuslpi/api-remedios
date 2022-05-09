@@ -15,13 +15,16 @@ class CategoriaController {
     static listarCategoriasPorId = (req, res) => {
         const { id } = req.params;
 
-        categorias.findById(id, (err, categorias) => {
-            if(err){
-                res.status(400).send({ message: `${err.message} - Id não encontrado.` })
-            } else { 
-                res.status(200).send(categorias);
-            }
-        })
+        categorias.findById(id)
+                  .populate('listaRemedios', 'nome')
+                  .exec((err, categorias) => {
+                    if(err){
+                        res.status(400).send({ message: `${err.message} - Id não encontrado.` })
+                    } else { 
+                        res.status(200).send(categorias);
+                    }
+                  }
+        )
     }
 
     static cadastrarCategoria = (req, res) => {

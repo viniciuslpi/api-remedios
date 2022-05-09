@@ -11,7 +11,9 @@ class FarmaciaController {
     static listarFarmaciasPorId = (req, res) => {
         const { id } = req.params;
 
-        farmacias.findById(id, (err, farmacias) => {
+        farmacias.findById(id)
+                    .populate('listaRemedios', 'nome')
+                    .exec((err, farmacias) => {
             if(err){
                 res.status(400).send({ message: `${err.message} - Id não encontrado.` })
             } else { 

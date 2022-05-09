@@ -2,6 +2,7 @@ import express from "express";
 import remedios from "./remediosRoutes.js"
 import farmacias from "./farmaciasRoutes.js"
 import categorias from "./categoriasRoutes.js"
+import estados from "./estadosRoutes.js";
 
 const routes = (app) => {
     app.route('/').get((req, res) => {
@@ -12,7 +13,8 @@ const routes = (app) => {
         express.json(),
         remedios,
         farmacias, 
-        categorias
+        categorias, 
+        estados
     )
 }
 

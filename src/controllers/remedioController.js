@@ -14,6 +14,7 @@ class RemedioController{
         remedios.findById(id)
               .populate('farmacias', 'nome')
               .populate('categorias', 'nome')
+              .populate('estados', 'nome')
               .exec((err, remedios) => {
             if(err){
                 res.status(400).send({ message: `${err.message} - id do item não encontrado.` })
