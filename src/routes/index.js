@@ -1,10 +1,11 @@
 import express from "express";
-import remedios from "./remediosRoutes.js"
-import farmacias from "./farmaciasRoutes.js"
-import categorias from "./categoriasRoutes.js"
+import remedios from "./remediosRoutes.js";
+import farmacias from "./farmaciasRoutes.js";
+import categorias from "./categoriasRoutes.js";
 import estados from "./estadosRoutes.js";
 import usuarios from "./usuariosRoutes.js";
 import lembretes from "./lembretesRoutes.js";
+import perguntas from "./perguntasRoutes.js";
 
 const routes = (app) => {
     app.route('/').get((req, res) => {
@@ -18,7 +19,8 @@ const routes = (app) => {
         categorias, 
         estados, 
         usuarios,
-        lembretes
+        lembretes,
+        perguntas
     )
 }
 
