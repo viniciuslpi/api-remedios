@@ -5,8 +5,14 @@ const perguntaSchema = new mongoose.Schema({
     titulo: { type: String, required: true },
     descricao: { type: String, required: true },
     numero: { type: Number, required: true },
-    duvidas: [ { type: String, required: false }, { type: String, required: false } ]
-}, 
+    duvidas:
+        [
+            {
+                titulo: { type: String, required: false },
+                descricao: { type: String, required: false }
+            }
+        ]
+},
 {
     versionKey: false
 });
