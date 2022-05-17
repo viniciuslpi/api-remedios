@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const remediosSchema = new mongoose.Schema({
     id: { type: String },
+    nome: { type: String },
     descricao: { type: String, required: true },
     dosagem: { type: String, required: true },
     farmacias: [{ type: mongoose.Schema.Types.ObjectId, ref: 'farmacias', required: true }],
