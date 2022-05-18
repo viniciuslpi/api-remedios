@@ -2,9 +2,10 @@ import mongoose from "mongoose";
 
 const usuarioSchema = new mongoose.Schema({
     id: { type: String },
+    apelido: { type: String, required: false },
     nome: { type: String, required: true },
     telefone: { type: String, required: true },
-    localidade: { type: mongoose.Schema.Types.ObjectId, ref: 'estados', required: true },
+    endereco: { type: Object, required: true },
     lembretes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'lembretes', required: true }]
 },
 {
