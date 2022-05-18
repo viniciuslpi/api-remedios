@@ -9,15 +9,23 @@ import perguntas from "./perguntasRoutes.js";
 
 const routes = (app) => {
     app.route('/').get((req, res) => {
-        res.status(200).send({ titulo: 'Api de Remédios' });
+        res.status(200).send({
+            titulo: 'Api de Remédios',
+            descricao: 'Banco de dados desenvolvido para armazenar dados do Assistente Virtual Remedinho.',
+            rotas: [
+                '/farmacias',
+                '/perguntas',
+                '/remedios',
+            ]
+        });
     })
 
     app.use(
         express.json(),
         remedios,
-        farmacias, 
-        categorias, 
-        estados, 
+        farmacias,
+        categorias,
+        estados,
         usuarios,
         lembretes,
         perguntas
