@@ -3,7 +3,11 @@ import remedios from '../models/Remedios.js';
 class RemedioController{
     
     static listarRemedios = (req, res) => {
-        remedios.find((err, remedios) => {
+        remedios.find()
+        .populate('farmacias', 'nome')
+        .populate('categorias', 'nome')
+        .populate('estados', 'nome')
+              .exec((err, remedios) => {
             res.status(200).json(remedios)
         })
     }   
@@ -26,11 +30,8 @@ class RemedioController{
 
     static listarRemedioPorNome = (req, res) => {
         const {texto} = req.params;
-
-        console.log(req.params, texto);
-
-        // remedios.find({$or: [{nome: `/${texto}/i`}, {descricao: `/${texto}/i`}]})
-        remedios.find({nome: `/${texto}/`})
+        const regex = new RegExp(texto);
+        remedios.find({$or: [{nome: regex}, {descricao: regex}]})
               .populate('farmacias', 'nome')
               .populate('categorias', 'nome')
               .populate('estados', 'nome')
