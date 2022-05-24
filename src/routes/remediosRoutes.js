@@ -5,7 +5,8 @@ const router = express.Router();
 
 router
     .get('/remedios',        RemedioController.listarRemedios)
-    .get('/remedios/:id',    RemedioController.listarRemedioPorId)
+    // .get('/remedios/:id',    RemedioController.listarRemedioPorId)
+    .get('/remedios/:texto',    RemedioController.listarRemedioPorNome)
     .post('/remedios',       RemedioController.cadastrarRemedio)
     .put('/remedios/:id',    RemedioController.atualizarRemedio)
     .delete('/remedios/:id', RemedioController.excluirRemedio)
